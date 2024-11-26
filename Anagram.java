@@ -32,43 +32,31 @@ public class Anagram {
 	public static boolean isAnagram(String str1, String str2) {
 		String s1 = preProcess(str1);
 		String s2 = preProcess(str2);
-		if (s1.length() != s2.length())
-		{
-			return false;
-		}
 		int length1 = s1.length();
 		int length2 = s2.length();
 		boolean anagrams = true;
 		for (int i = 0; length1 < i; i++ )
 		{
 			char c = s1.charAt(i);
+			if (c != ' ')
+			{
 			for (int j = 0; length2 > j; j++)
 			{
 				if (s2.indexOf(c) == -1)
 				{
-					anagrams = false;
+					return false;
 				}
 				else 
 				{
-					anagrams = true;
 					String news1= "";
 					String news2= "";
 					for (int z = 0; z < s1.length(); z++)
 					{
-						if (s2.indexOf(c) == z)
-						{
-							news2 = news2 + "";
-						}
-						else 
+						if (s2.indexOf(c) != z )
 						{
 							news2 = news2 + s2.charAt(z);
-
 						}
-						 if (i==z)
-						 {
-							news1= news1 + "";
-						 }
-						 else
+						 if (i!=z)
 						 {
 							news1 = news1 + s1.charAt(z);
 						 }
@@ -76,12 +64,10 @@ public class Anagram {
 					s1 = preProcess(news1);
 					s2 = preProcess(news2);
 				}
-				
 			}		
+			
+
 		}
-		if (s1.length() != s2.length())
-		{
-			anagrams = false;
 		}
 		return anagrams;
 	}
@@ -98,7 +84,10 @@ public class Anagram {
 			if ((now >= 'a') && (now <= 'z'))
 			{
 				clean = clean + now;
-				i++;
+			}
+			if (now == ' ') 
+			{
+				clean = clean + now;
 			}
 			else
 			{
@@ -106,8 +95,8 @@ public class Anagram {
 			{
 				clean = clean + ((char)(now + 32));
 			}
-			i++;
 			}
+			i++;
 		}
 		return clean;
 	} 
