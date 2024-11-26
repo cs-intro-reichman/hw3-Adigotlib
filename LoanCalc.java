@@ -45,7 +45,7 @@ public class LoanCalc {
 	{
 		double g = (loan / n);
 		double plus = 0.001;
-		while (Math.abs(endBalance(loan, rate, n, g)) <= epsilon) 
+		while (Math.abs(endBalance(loan, rate, n, g)) >= epsilon) 
 		{
 			g = g + plus;
 			iterationCounter ++;
