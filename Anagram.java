@@ -117,7 +117,23 @@ public class Anagram {
 	public static String randomAnagram(String str) {
 		String anagram = "";
 		String cleanstr = preProcess(str); 
-		int i= 0;
+		int lenthclean= cleanstr.length();
+		for (int i = 0; i < lenthclean; i++ )
+		{
+			int Whichchar = (int)((Math.random())* lenthclean);
+			anagram = anagram + cleanstr.charAt(Whichchar);
+			String cleanString = "";
+			for (int z = 0; z < lenthclean; z++ )
+			{
+				if (z != Whichchar)
+				{
+					cleanString =cleanString + cleanstr.charAt(z);
+
+				}
+				
+			}
+		}
+
 		return anagram;
 	}
 }
