@@ -118,7 +118,8 @@ public class Anagram {
 		String anagram = "";
 		String cleanstr = preProcess(str); 
 		int lenthclean= cleanstr.length();
-		for (int i = 0; i < lenthclean; i++ )
+		int i = 0;
+		while ( i < lenthclean) 
 		{
 			int Whichchar = (int)((Math.random())* lenthclean);
 			anagram = anagram + cleanstr.charAt(Whichchar);
@@ -128,10 +129,10 @@ public class Anagram {
 				if (z != Whichchar)
 				{
 					cleanString =cleanString + cleanstr.charAt(z);
-
 				}
-				
 			}
+			cleanstr = cleanString;
+			lenthclean= cleanstr.length();
 		}
 
 		return anagram;
