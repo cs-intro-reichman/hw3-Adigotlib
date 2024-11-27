@@ -1,5 +1,7 @@
 
 
+
+
 /** Functions for checking if a given string is an anagram. */
 public class Anagram {
 	public static void main(String args[]) {
@@ -30,47 +32,35 @@ public class Anagram {
 
 	// Returns true if the two given strings are anagrams, false otherwise.
 	public static boolean isAnagram(String str1, String str2) {
-		String s1 = preProcess(str1);
-		String s2 = preProcess(str2);
-		int length1 = s1.length();
-		int length2 = s2.length();
-		boolean anagrams = true;
-		for (int i = 0; length1 < i; i++ )
-		{
-			char c = s1.charAt(i);
-			if (c != ' ')
-			{
-			for (int j = 0; length2 > j; j++)
-			{
-				if (s2.indexOf(c) == -1)
-				{
-					return false;
-				}
-				else 
-				{
-					String news1= "";
-					String news2= "";
-					for (int z = 0; z < s1.length(); z++)
-					{
-						if (s2.indexOf(c) != z )
-						{
-							news2 = news2 + s2.charAt(z);
-						}
-						 if (i!=z)
-						 {
-							news1 = news1 + s1.charAt(z);
-						 }
-					}
-					s1 = preProcess(news1);
-					s2 = preProcess(news2);
-				}
-			}		
-			
+		str1 = preProcess(str1);
+        str2 = preProcess(str2);
 
-		}
-		}
-		return anagrams;
-	}
+        str1 = str1.replace(" ", "");
+        str2 = str2.replace(" ", "");
+        if (str1.length() != str2.length()) {
+            return false; 
+        }
+
+        for (int i = 0; i < str1.length(); i++) {
+            char ch = str1.charAt(i);
+            int lenght1 = 0;
+            int lenght2 = 0;
+            for (int j = 0; j < str1.length(); j++) {
+                if (ch == str1.charAt(j)) {
+                    lenght1++;
+                }
+            }
+            for (int g = 0; g < str2.length(); g++) {
+                if (ch == str2.charAt(g)) {
+                    lenght2++;
+                }
+            }
+            if (lenght1 != lenght2) {
+                return false;
+            }
+        }
+        return true;
+    }
 	   
 	// Returns a preprocessed version of the given string: all the letter characters are converted
 	// to lower-case, and all the other characters are deleted, except for spaces, which are left
